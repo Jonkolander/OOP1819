@@ -12,20 +12,6 @@ public class View {
 
     public Scanner scanner = new Scanner(System.in);
     
-    /**
-     * Checks whether the user input is numeric
-     * @param string
-     * @return true if numeric, otherwise false 
-     */
-    public boolean isNumeric(String string) {
-        try {
-            Double.parseDouble(string);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-    
     public int enterGroupSize() {
         System.out.print("Please enter the group size: ");
         int groupSize = scanner.nextInt();
@@ -45,6 +31,10 @@ public class View {
     
     public void invalidStudent() {
         System.out.println("The student could unfortunately not be found, please try again.");
+    }
+    
+    public void invalidInput() {
+        System.out.println("Not enough information is specified, please try again.");
     }
     
     public void update(Group students) {

@@ -1,7 +1,7 @@
 package Assignment01;
 
 /**
- * This assignment is designed according to the MVC (Model View Controller) guidelines
+ * This assignment is designed according to the MVC guidelines
  * 
  * @author Dennis den Hollander (s4776658)
  * @author Tom Kamp (s4760921)
@@ -26,10 +26,15 @@ public class Main {
         
         while(true) {
             String adjustedStudent = VIEW.adjustStudent();
-            boolean isNumeric = VIEW.isNumeric(adjustedStudent);
-            if (isNumeric && Integer.parseInt(adjustedStudent) < 0) {
-                VIEW.terminate();
-                break;
+            
+            if (adjustedStudent.split(" ", 2).length < 2) {
+                if (Integer.parseInt(adjustedStudent) < 0) {
+                    VIEW.terminate();
+                    break;
+                }
+                
+                VIEW.invalidInput();
+                continue;
             }
             
             int studentNumber = Integer.parseInt(adjustedStudent.split(" ", 2)[0]);
