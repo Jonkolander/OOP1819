@@ -11,8 +11,8 @@ public class Group {
 
     private final Student[] STUDENTS;
     
-    public Group (Student[] students) {
-        this.STUDENTS = students;
+    public Group (int groupSize) {
+        this.STUDENTS = new Student[groupSize];
     }
     
     public Student[] getStudents() {

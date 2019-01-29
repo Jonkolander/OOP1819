@@ -8,16 +8,22 @@ package Assignment01;
  */
 public class Student {
 
-    private String fullName;
+    private String firstName;
+    private String surName;
     private final int STUDENT_NUMBER;
     
-    public Student (String fullName, int studentNumber) {
-        this.fullName = fullName;
+    public Student (String firstName, String surName, int studentNumber) {
+        this.firstName = firstName;
+        this.surName = surName;
         this.STUDENT_NUMBER = studentNumber;
     }
     
-    public void setName(String newName) {
-        this.fullName = newName;
+    public void setFirstName(String newName) {
+        this.firstName = newName;
+    }
+    
+    public void setSurName(String newName) {
+        this.surName = newName;
     }
     
     public int getStudentNumber() {
@@ -26,7 +32,7 @@ public class Student {
     
     @Override
     public String toString() {
-        return fullName + ", " + "s" + STUDENT_NUMBER;
+        return firstName + " " + surName + ", " + "s" + STUDENT_NUMBER;
     }
     
 }

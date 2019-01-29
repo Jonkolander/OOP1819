@@ -13,39 +13,52 @@ public class Main {
     public static void main (String[] args) {
         int groupSize = VIEW.enterGroupSize();
         
-        Group students = new Group(new Student[groupSize]);
-        for (int student = 0; student < groupSize; student++) {
-            String[] newStudent = VIEW.enterStudent().split(" ", 2);
+        Group students = new Group(groupSize);
+        for (int index = 0; index < groupSize; index++) {
+            String[] newStudent = VIEW.enterStudent();
             
-            int studentNumber = Integer.parseInt(newStudent[0]);
-            String fullName = newStudent[1];
-            students.addStudent(new Student(fullName, studentNumber), student);
+            if (newStudent.length > 2) {
+                int studentNumber = Integer.parseInt(newStudent[0]);
+                String firstName = newStudent[1];
+                String surName = newStudent[2];
+                
+                Student student = new Student(firstName, surName, studentNumber);
+                students.addStudent(student, index);
+            }
         }
         
         VIEW.updateGroup(students);
         
         while(true) {
-            String adjustedStudent = VIEW.adjustStudent();
+            String[] adjustedStudent = VIEW.adjustStudent();
             
-            if (adjustedStudent.split(" ", 2).length < 2) {
-                if (Integer.parseInt(adjustedStudent) < 0) {
-                    VIEW.terminate();
-                    break;
+            if (adjustedStudent.length < 3) {
+                if (adjustedStudent.length < 2) {
+                    if (Integer.parseInt(adjustedStudent[0]) < 0) {
+                        // The user entered a negative number to terminate the program 
+                        VIEW.terminate();
+                        break;
+                    }
                 }
                 
+                // The user entered a malformed input
                 VIEW.invalidInput();
                 continue;
             }
             
-            int studentNumber = Integer.parseInt(adjustedStudent.split(" ", 2)[0]);
-            String fullName = adjustedStudent.split(" ", 2)[1];
+            int studentNumber = Integer.parseInt(adjustedStudent[0]);
+            String firstName = adjustedStudent[1];
+            String surName = adjustedStudent[2];
             
             Student student = students.getStudent(studentNumber);
             if (student == null) {
+                // A student with the specified studentNumber could not be found
                 VIEW.invalidStudent();
                 continue;
             }
-            student.setName(fullName);
+            
+            student.setFirstName(firstName);
+            student.setSurName(surName);
             
             VIEW.updateGroup(students);
         }
