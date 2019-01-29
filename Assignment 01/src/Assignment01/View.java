@@ -37,7 +37,7 @@ public class View {
         System.out.println("Not enough information is specified, please try again.");
     }
     
-    public void update(Group students) {
+    public void updateGroup(Group students) {
         System.out.println("\nThe group now contains:");
         for (Student student : students.getStudents()) {
             System.out.println(student);

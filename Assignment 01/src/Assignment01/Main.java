@@ -22,7 +22,7 @@ public class Main {
             students.addStudent(new Student(fullName, studentNumber), student);
         }
         
-        VIEW.update(students);
+        VIEW.updateGroup(students);
         
         while(true) {
             String adjustedStudent = VIEW.adjustStudent();
@@ -47,7 +47,7 @@ public class Main {
             }
             student.setName(fullName);
             
-            VIEW.update(students);
+            VIEW.updateGroup(students);
         }
     }
     
