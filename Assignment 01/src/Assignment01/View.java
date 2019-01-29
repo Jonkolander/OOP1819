@@ -19,14 +19,14 @@ public class View {
         return groupSize;
     }
     
-    public String enterStudent() {
+    public String[] enterStudent() {
         System.out.print("Please enter a student: ");
-        return scanner.nextLine();
+        return scanner.nextLine().split(" ");
     }
     
-    public String adjustStudent() {
+    public String[] adjustStudent() {
         System.out.println("\nStudent number and new given / family name?");
-        return scanner.nextLine();
+        return scanner.nextLine().split(" ");
     }
     
     public void invalidStudent() {
