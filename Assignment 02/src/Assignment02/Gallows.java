@@ -3,6 +3,9 @@ package Assignment02;
 import java.util.ArrayList;
 
 /**
+ * The gallow, containing of a word to be guessed, a list 
+ * of already guessed letters and amount of lives.
+ * 
  * @author Dennis den Hollander (s4776658)
  * @author Tom Kamp (s4760921)
  */

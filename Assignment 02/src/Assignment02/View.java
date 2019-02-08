@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * The view
+ * 
  * @author Dennis den Hollander (s4776658)
  * @author Tom Kamp (s4760921)
  */
