@@ -1,7 +1,10 @@
 package Assignment03;
 
 /**
- * @author Dennis den Hollander
+ * The Geometric object interface
+ * 
+ * @author Dennis den Hollander (s4776658)
+ * @author Tom Kamp (s4760921)
  */
 public interface Geometric extends Comparable<Geometric> {
 

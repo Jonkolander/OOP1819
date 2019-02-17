@@ -1,43 +1,44 @@
 package Assignment03;
 
 /**
- * @author Dennis den Hollander
+ * @author Dennis den Hollander (s4776658)
+ * @author Tom Kamp (s4760921)
  */
 public class Circle implements Geometric {
 
     private double x;
     private double y;
-    private double radius;
+    private final double RADIUS;
     
     public Circle (double x, double y, double radius) {
         this.x = x;
         this.y = y;
-        this.radius = radius;
+        this.RADIUS = radius;
     }
     
     @Override
     public double left() {
-        return this.x - this.radius;
+        return this.x - this.RADIUS;
     }
 
     @Override
     public double right() {
-        return this.x + this.radius;
+        return this.x + this.RADIUS;
     }
 
     @Override
     public double top() {
-        return this.y + this.radius;
+        return this.y + this.RADIUS;
     }
 
     @Override
     public double bottom() {
-        return this.y - this.radius;
+        return this.y - this.RADIUS;
     }
 
     @Override
     public double area() {
-        return Math.PI * Math.pow(this.radius, this.x);
+        return Math.PI * Math.pow(this.RADIUS, this.x);
     }
 
     @Override
@@ -53,7 +54,11 @@ public class Circle implements Geometric {
 
     @Override
     public String toString() {
-        return "Circle(x: " + x + ", y: " + y + ", radius: " + radius + ", area: " + area() + ")";
+        return "Circle(x: " + this.x 
+                + ", y: " + this.y 
+                + ", radius: " + this.RADIUS 
+                + ", area: " + this.area() 
+                + ")";
     }    
 
 }

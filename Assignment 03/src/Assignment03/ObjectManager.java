@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * This class is responsible for managing the stored objects
+ * 
  * @author Dennis den Hollander (s4776658)
  * @author Tom Kamp (s4760921)
  */
@@ -58,34 +60,27 @@ public class ObjectManager {
                 Arrays.sort(shapes, 0, shapesInList);
         }
         
+        // Make sure that only the not empty objects get sorted
         List<Geometric> list = Arrays.asList(shapes);
-        List<Geometric> nonNull = list.subList(0, shapesInList);
-        List<Geometric> nullElements = list.subList(shapesInList, list.size());
+        List<Geometric> geometricObjects = list.subList(0, shapesInList);
+        List<Geometric> emptyObjects = list.subList(shapesInList, list.size());
         
-        if(command2.toLowerCase().equals("descending")) 
-            Collections.reverse(nonNull);
-        
-        ArrayList<Geometric> list3 = new ArrayList<>();
-        list3.addAll(nonNull);
-        list3.addAll(nullElements);
-        
-        shapes = list3.toArray(new Geometric[list3.size()]);
-    }
-    
-    public boolean containsNull() {
-        int count = 0;
-        for (Geometric o : shapes) {
-            if (o != null)
-                count++;
+        if(command2.toLowerCase().equals("descending")) {
+            Collections.reverse(geometricObjects);
         }
-        return count != shapes.length;
-    }    
+        
+        ArrayList<Geometric> sortedList = new ArrayList<>();
+        sortedList.addAll(geometricObjects);
+        sortedList.addAll(emptyObjects);
+        
+        shapes = sortedList.toArray(new Geometric[sortedList.size()]);
+    }  
     
     @Override
     public String toString(){
         String str = "";
         for (Geometric shape : shapes){
-            str += shape + "\n";
+            str += shape != null ? "\n " + shape : "\n <empty>";
         }
         return str;
     }

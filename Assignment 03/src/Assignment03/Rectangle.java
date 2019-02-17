@@ -1,45 +1,46 @@
 package Assignment03;
 
 /**
- * @author Dennis den Hollander
+ * @author Dennis den Hollander (s4776658)
+ * @author Tom Kamp (s4760921)
  */
 public class Rectangle implements Geometric {
 
     private double x;
     private double y;
-    private double width;
-    private double height;
+    private final double WIDTH;
+    private final double HEIGHT;
 
     public Rectangle(double x, double y, double w, double h) {
         this.x = x;
         this.y = y;
-        this.width = w;
-        this.height = h;
+        this.WIDTH = w;
+        this.HEIGHT = h;
     }
     
     @Override
     public double left() {
-        return this.x - this.width;
+        return this.x;
     }
 
     @Override
     public double right() {
-        return this.x + this.width;
+        return this.x + this.WIDTH;
     }
 
     @Override
     public double top() {
-        return this.y + this.height;
+        return this.y + this.HEIGHT;
     }
 
     @Override
     public double bottom() {
-        return this.y - this.height;
+        return this.y;
     }
 
     @Override
     public double area() {
-        return this.width * this.height;
+        return this.WIDTH * this.HEIGHT;
     }
 
     @Override
@@ -55,7 +56,12 @@ public class Rectangle implements Geometric {
     
     @Override
     public String toString() {
-        return "Rectangle(x: " + x + ", y: " + y + ", width: " + width + ", height: " + height + ", area: " + area() + ")";
+        return "Rectangle(x: " + this.x 
+                + ", y: " + this.y 
+                + ", width: " + this.WIDTH 
+                + ", height: " + this.HEIGHT 
+                + ", area: " + this.area() 
+                + ")";
     }
 
 }
