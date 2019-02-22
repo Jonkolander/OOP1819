@@ -1,7 +1,8 @@
 package Assignment04;
 
 /**
- * @author Dennis den Hollander
+ * @author Dennis den Hollander (s4776658)
+ * @author Tom Kamp (s4760921)
  */
 public class OpenQuestion extends Question {
 
@@ -22,7 +23,7 @@ public class OpenQuestion extends Question {
     
     @Override
     public String toString() {
-        return this.question + "\n";
+        return "Question: " + this.question + "\n";
     }
 
     @Override
@@ -37,10 +38,7 @@ public class OpenQuestion extends Question {
     
     @Override
     public void setScore(int s) {
-        if( s < 1 || s > 5 )
-            this.points = 3;
-        else
-            this.points = s;
+        this.points = (s < 1 || s > 5) ? 3 : s;
     }
 
 }
