@@ -6,44 +6,39 @@ package Assignment04;
  */
 public class ThisThatQuestion extends Question {
 
-    private String question;
-    private String answer1, answer2;
-    private int correctAnswer;
-    private int score;
+    private final String QUESTION;
+    private final String ANSWER1, ANSWER2;
+    private final int CORRECT_ANSWER;
     
-    ThisThatQuestion (String question, String answer1, String answer2, int correctAnswer, int score) {
-        this.question = question;
-        this.answer1 = answer1;
-        this.answer2 = answer2;
-        this.correctAnswer = correctAnswer;
-        this.score = score;
+    public ThisThatQuestion (String question, String answer1, String answer2, int correctAnswer, int score) {
+        super.setScore(score);
+        this.QUESTION = question;
+        this.ANSWER1 = answer1;
+        this.ANSWER2 = answer2;
+        this.CORRECT_ANSWER = correctAnswer;
     }
     
-    ThisThatQuestion (String question, String answer1, String answer2, int correctAnswer) {
-        this.question = question;
-        this.answer1 = answer1;
-        this.answer2 = answer2;
-        this.correctAnswer = correctAnswer;
+    public ThisThatQuestion (String question, String answer1, String answer2, int correctAnswer) {
+        this.QUESTION = question;
+        this.ANSWER1 = answer1;
+        this.ANSWER2 = answer2;
+        this.CORRECT_ANSWER = correctAnswer;
     }
     
     @Override
     public String toString() {
-        return this.answer1 + " or " + this.answer2 + ": " + this.question;
+        return this.ANSWER1 + " or " + this.ANSWER2 + ": " + this.QUESTION;
     }
 
     @Override
     public boolean isCorrect(String answer) {
-        return true;
+        String correctAnswer = this.CORRECT_ANSWER == 1 ? this.ANSWER1 : this.ANSWER2;
+        return correctAnswer.equalsIgnoreCase(answer);
     }
 
     @Override
     public String correctAnswer() {
-        return "";
+        return this.CORRECT_ANSWER == 1 ? this.ANSWER1 : this.ANSWER2;
     }
-
-    @Override
-    public void setScore(int s) {
-
-    }
-
+    
 }

@@ -6,46 +6,40 @@ package Assignment04;
  */
 public class MultipleChoiceQuestion extends Question {
 
-    private String question;
-    private String[] answers;
-    private int correctAnswer;
-    private int score;
+    private final String QUESTION;
+    private final String[] ANSWERS;
+    private final int CORRECT_ANSWER;
     
     public MultipleChoiceQuestion(String question, String [] answers, int correctAnswer, int score) {
-        this.question = question;
-        this.answers = answers;
-        this.correctAnswer = correctAnswer;
-        this.score = score;
+        super.setScore(score);
+        this.QUESTION = question;
+        this.ANSWERS = answers;
+        this.CORRECT_ANSWER = correctAnswer;
     }
     
     public MultipleChoiceQuestion(String question, String [] answers, int correctAnswer) {
-        this.question = question;
-        this.answers = answers;
-        this.correctAnswer = correctAnswer;
+        this.QUESTION = question;
+        this.ANSWERS = answers;
+        this.CORRECT_ANSWER = correctAnswer;
     }
     
     @Override
     public String toString() {
-        String output = "Question:  " + question + "\n";
-        for (int i = 0; i < this.answers.length; i++) {
-            output += "  " + Character.toChars(i + 65)[0] + ": " + answers[i] + "\n";
+        String output = QUESTION + "\n";
+        for (int i = 0; i < this.ANSWERS.length; i++) {
+            output += "  " + Character.toChars(i + 65)[0] + ": " + ANSWERS[i] + "\n";
         }
-        return output + "\n";
+        return output;
     }
 
     @Override
     public boolean isCorrect(String answer) {
-        return (int) (answer.toUpperCase().charAt(0) - 65) == this.correctAnswer;
+        return (int) (answer.toUpperCase().charAt(0) - 65) == this.CORRECT_ANSWER;
     }
 
     @Override
     public String correctAnswer() {
-        return (char) (correctAnswer + 65) +  ": " + this.answers[correctAnswer];
-    }
-
-    @Override
-    public void setScore(int s) {
-
+        return (char) (CORRECT_ANSWER + 65) +  ": " + this.ANSWERS[CORRECT_ANSWER];
     }
 
 }

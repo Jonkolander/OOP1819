@@ -6,39 +6,33 @@ package Assignment04;
  */
 public class OpenQuestion extends Question {
 
-    private String question;
-    private String answer;
-    private int points;
+    private final String QUESTION;
+    private final String ANSWER;
     
-    public OpenQuestion (String question, String answer, int points) {
-        this.question = question;
-        this.answer = answer;
-        this.points = points;
+    public OpenQuestion (String question, String answer, int score) {
+        super.setScore(score);
+        this.QUESTION = question;
+        this.ANSWER = answer;
     }
     
     public OpenQuestion (String question, String answer) {
-        this.question = question;
-        this.answer = answer;
+        this.QUESTION = question;
+        this.ANSWER = answer;
     }
     
     @Override
     public String toString() {
-        return "Question: " + this.question + "\n";
+        return this.QUESTION + "\n";
     }
 
     @Override
     public boolean isCorrect(String answer) {
-        return this.answer.equalsIgnoreCase(answer);
+        return this.ANSWER.equalsIgnoreCase(answer);
     }
 
     @Override
     public String correctAnswer() {
-        return this.answer;
-    }
-    
-    @Override
-    public void setScore(int s) {
-        this.points = (s < 1 || s > 5) ? 3 : s;
+        return this.ANSWER;
     }
 
 }

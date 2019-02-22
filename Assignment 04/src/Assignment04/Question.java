@@ -6,7 +6,7 @@ package Assignment04;
  */
 public abstract class Question {
     
-    private int score = 0;
+    protected int score = 3;
     
     @Override
     abstract public String toString();
@@ -15,6 +15,8 @@ public abstract class Question {
     
     abstract public String correctAnswer();
     
-    abstract public void setScore(int s);
+    public void setScore(int s) {
+        this.score = (s < 1 || s > 5) ? 3 : s;
+    };
     
 }
