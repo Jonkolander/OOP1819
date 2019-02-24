@@ -2,7 +2,6 @@ package Assignment04;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * @author Dennis den Hollander (s4776658)

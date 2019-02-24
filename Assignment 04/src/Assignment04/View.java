@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @author Dennis den Hollander
+ * @author Dennis den Hollander (s4776658)
+ * @author Tom Kamp (s4760921)
  */
 public class View {
     
