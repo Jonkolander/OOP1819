@@ -25,9 +25,9 @@ public class MultipleChoiceQuestion extends Question {
     
     @Override
     public String toString() {
-        String output = QUESTION + "\n";
+        String output = this.QUESTION;
         for (int i = 0; i < this.ANSWERS.length; i++) {
-            output += "  " + Character.toChars(i + 65)[0] + ": " + ANSWERS[i] + "\n";
+            output += "\n  " + Character.toChars(i + 65)[0] + ": " + ANSWERS[i];
         }
         return output;
     }
@@ -40,6 +40,11 @@ public class MultipleChoiceQuestion extends Question {
     @Override
     public String correctAnswer() {
         return (char) (CORRECT_ANSWER + 65) +  ": " + this.ANSWERS[CORRECT_ANSWER];
+    }
+
+    @Override
+    public Question duplicate() {
+        return new MultipleChoiceQuestion(this.QUESTION, this.ANSWERS, this.CORRECT_ANSWER, super.score);
     }
 
 }

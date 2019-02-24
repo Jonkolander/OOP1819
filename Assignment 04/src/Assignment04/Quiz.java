@@ -10,9 +10,9 @@ import java.util.Scanner;
  */
 public class Quiz {
 
-    private final Scanner SCANNER = new Scanner(System.in);
+    private final View VIEW = new View();
     private final List<Question> QUESTIONS;
-    private List<Question> wrongQuestions = new LinkedList<>();
+    private final List<Question> WRONG_QUESTIONS = new LinkedList<>();
     
     public Quiz (List<Question> questions) {
         this.QUESTIONS = questions;
@@ -20,37 +20,27 @@ public class Quiz {
     
     public void start () {
         for (Question question : this.QUESTIONS) {
-            System.out.println("[" + Integer.toString(this.QUESTIONS.indexOf(question) + 1) + "] " + question);
-            System.out.print("> Your answer: ");
-            String answer = SCANNER.nextLine();
-            if(question.isCorrect(answer)) {
-                System.out.println("Correct!");
+            VIEW.showQuestion(question);
+            if(question.isCorrect(VIEW.getUserInput())) {
+                VIEW.correct();
             } else {
-                System.out.println("Wrong! The answer was: " + question.correctAnswer());
-                wrongQuestions.add(question);
+                VIEW.wrongAnswer(question.correctAnswer());
+                question.score = 0;
+                this.WRONG_QUESTIONS.add(question.duplicate());
             }
         }
             
-        for (Question repeatedQuestion : this.wrongQuestions) {
-            System.out.println(repeatedQuestion);
-            System.out.print("> Your answer: ");
-            String answer = SCANNER.nextLine();
-            if(repeatedQuestion.isCorrect(answer)) {
-                System.out.println("Correct!");
+        for (Question repeatedQuestion : this.WRONG_QUESTIONS) {
+            VIEW.showQuestion(repeatedQuestion);
+            if(repeatedQuestion.isCorrect(VIEW.getUserInput())) {
+                VIEW.correct();
             } else {
-                System.out.println("Wrong! The answer was: " + repeatedQuestion.correctAnswer());
+                VIEW.wrongAnswer(repeatedQuestion.correctAnswer());
+                repeatedQuestion.score = 0;
             }
         }
         
-        printScoreBoard();
-    }
-    
-    private void printScoreBoard() {
-        System.out.printf("%-15s %s\n", "Question", "Score");
-        System.out.println("----------------------------");
-        for (Question question : this.QUESTIONS) {
-            System.out.printf("Question %d %-4s %d\n", this.QUESTIONS.indexOf(question) + 1, "", question.score);
-        }
+        VIEW.printScoreBoard(this.QUESTIONS, this.WRONG_QUESTIONS);
     }
     
 }

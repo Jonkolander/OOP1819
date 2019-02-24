@@ -22,7 +22,7 @@ public class OpenQuestion extends Question {
     
     @Override
     public String toString() {
-        return this.QUESTION + "\n";
+        return this.QUESTION;
     }
 
     @Override
@@ -33,6 +33,11 @@ public class OpenQuestion extends Question {
     @Override
     public String correctAnswer() {
         return this.ANSWER;
+    }
+
+    @Override
+    public Question duplicate() {
+        return new OpenQuestion(this.QUESTION, this.ANSWER, super.score);
     }
 
 }

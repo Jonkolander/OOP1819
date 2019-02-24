@@ -15,6 +15,8 @@ public abstract class Question {
     
     abstract public String correctAnswer();
     
+    abstract public Question duplicate();
+    
     public void setScore(int s) {
         this.score = (s < 1 || s > 5) ? 3 : s;
     };

@@ -40,5 +40,10 @@ public class ThisThatQuestion extends Question {
     public String correctAnswer() {
         return this.CORRECT_ANSWER == 1 ? this.ANSWER1 : this.ANSWER2;
     }
+
+    @Override
+    public Question duplicate() {
+        return new ThisThatQuestion(this.QUESTION, this.ANSWER1, this.ANSWER2, this.CORRECT_ANSWER, super.score);
+    }
     
 }
