@@ -42,7 +42,7 @@ public class View {
             System.out.printf("%-15s | %s\n", "Question", "Score");
             System.out.println("----------------+-------");
             for (Question question : wrong_questions) {
-                System.out.printf("Question %d %-4s | %d\n", wrong_questions.indexOf(question) + 1, "", question.score);
+                System.out.printf("Question %d %-4s | %d\n", questions.indexOf(question) + 1, "", question.score);
             }
         }
     }

@@ -26,7 +26,7 @@ public class Quiz {
             } else {
                 VIEW.wrongAnswer(question.correctAnswer());
                 question.score = 0;
-                this.WRONG_QUESTIONS.add(question.duplicate());
+                this.WRONG_QUESTIONS.add(question);
             }
         }
             
