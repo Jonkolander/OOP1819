@@ -25,6 +25,13 @@ public class Variable extends NoArgumentExpression {
     }
 
     @Override
+    /**
+     * We added this in order to be able to negate variables 
+     * and succesfully evaluate their values, i.e.:
+     *   - if we negate a variable, we put a minus sign in front of the name of the variable
+     *   - if there is a minus sign, we create a constant with a minus in front
+     *   - otherwise, we do not put a minus sign in front of it
+     */
     public Expression eval(Map<String, Double> env) {
         boolean containsMinus = this.NAME.contains("-");
         String nameWithoutMinus = this.NAME.substring(1, this.NAME.length());

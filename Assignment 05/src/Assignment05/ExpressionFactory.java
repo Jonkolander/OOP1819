@@ -14,16 +14,16 @@ public class ExpressionFactory {
         return new Variable(variable);
     }
     
-    public static Expression add(Expression A, Expression B) {
-        return new Addition(A, B);
+    public static Expression neg(Expression X) {
+        return new Negate(X);
     }
     
-    public static Expression mul(Expression A, Expression B) {
-        return new Multiplication(A, B);
+    public static Expression add(Expression X, Expression Y) {
+        return new Addition(X, Y);
     }
     
-    public static Expression neg(Expression A) {
-        return new Negate(A);
+    public static Expression mul(Expression X, Expression Y) {
+        return new Multiplication(X, Y);
     }
 }
 

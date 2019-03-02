@@ -19,26 +19,26 @@ public class Multiplication extends TwoArgumentExpression {
     
     @Override
     public Expression partialEval() {
-        Expression av = this.X.partialEval();
-        Expression bv = this.Y.partialEval();
-        if (av instanceof Constant) {
-            Constant ac = (Constant) av;
-            if (ac.value() == 0) 
+        Expression partialX = this.X.partialEval();
+        Expression partialY = this.Y.partialEval();
+        if (partialX instanceof Constant) {
+            Constant constantX = (Constant) partialX;
+            if (constantX.value() == 0) 
                 return new Constant(0);
-            if (ac.value() == 1) 
-                return bv;
-            if (bv instanceof Constant) {
-                Constant bc = (Constant) bv;
-                return new Constant(ac.value() * bc.value());
+            if (constantX.value() == 1) 
+                return partialY;
+            if (partialY instanceof Constant) {
+                Constant constantY = (Constant) partialY;
+                return new Constant(constantX.value() * constantY.value());
             }
-            return new Multiplication(ac, bv);
-        } else if (bv instanceof Constant) {
-            Constant bc = (Constant) bv;
-            if (bc.value() == 0) 
+            return new Multiplication(constantX, partialY);
+        } else if (partialY instanceof Constant) {
+            Constant constantY = (Constant) partialY;
+            if (constantY.value() == 0) 
                 return new Constant(0);
-            if (bc.value() == 1) 
-                return av;
-            return new Multiplication(av, bc);
+            if (constantY.value() == 1) 
+                return partialX;
+            return new Multiplication(partialX, constantY);
         }
         return this;
     }

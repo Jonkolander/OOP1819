@@ -36,10 +36,9 @@ public class Main {
         expressions.add(mul(var("pi"), con(3)));
         expressions.add(neg(var("pi")));
         
-        for(Expression exp : expressions) {
-            System.out.printf("%-20s = %s\n", exp, exp.partialEval().eval(env));
-        }
-        
+        View view = new View(env);
+        view.printEnvironment();
+        view.printTestCases(expressions);
     }
     
 }

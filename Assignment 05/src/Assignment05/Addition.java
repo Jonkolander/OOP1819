@@ -19,23 +19,22 @@ public class Addition extends TwoArgumentExpression {
     
     @Override
     public Expression partialEval() {
-        Expression av = this.X.partialEval();
-        Expression bv = this.Y.partialEval();
-        if (av instanceof Constant) {
-            Constant ac = (Constant) av;
-            if (ac.value() == 0) 
-                return bv;
-            if (bv instanceof Constant) {
-                Constant bc = (Constant) bv;
-                return new Constant(ac.value() + bc.value());
+        Expression partialX = this.X.partialEval();
+        Expression partialY = this.Y.partialEval();
+        if (partialX instanceof Constant) {
+            Constant constantX = (Constant) partialX;
+            if (constantX.value() == 0) 
+                return partialY;
+            if (partialY instanceof Constant) {
+                Constant constantY = (Constant) partialY;
+                return new Constant(constantX.value() + constantY.value());
             }
-            return new Addition(ac, bv);
-        } 
-        else if (bv instanceof Constant) {
-            Constant bc = (Constant) bv;
-            if (bc.value() == 0) 
-                return av;
-            return new Addition(av, bc);
+            return new Addition(constantX, partialY);
+        } else if (partialY instanceof Constant) {
+            Constant constantY = (Constant) partialY;
+            if (constantY.value() == 0) 
+                return partialX;
+            return new Addition(partialX, constantY);
         }
         return this;
     }
