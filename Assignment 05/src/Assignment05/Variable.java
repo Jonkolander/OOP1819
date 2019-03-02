@@ -26,7 +26,9 @@ public class Variable extends NoArgumentExpression {
 
     @Override
     public Expression eval(Map<String, Double> env) {
-        return new Constant(env.get(this.NAME));
+        boolean containsMinus = this.NAME.contains("-");
+        String nameWithoutMinus = this.NAME.substring(1, this.NAME.length());
+        return containsMinus ? new Constant(-env.get(nameWithoutMinus)) : new Constant(env.get(this.NAME));
     }
     
     @Override

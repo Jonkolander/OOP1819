@@ -21,8 +21,7 @@ public class Addition extends TwoArgumentExpression {
     public Expression partialEval() {
         Expression av = this.X.partialEval();
         Expression bv = this.Y.partialEval();
-        if (av instanceof Constant) 
-        {
+        if (av instanceof Constant) {
             Constant ac = (Constant) av;
             if (ac.value() == 0) 
                 return bv;

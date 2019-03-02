@@ -21,7 +21,7 @@ public class Negate extends OneArgumentExpression {
         if (e1 instanceof Constant){
             Constant c1 = (Constant) e1;
             return new Constant(-c1.value());
-        }
+        } 
         else if (e1 instanceof Variable) {
             Variable v1 = (Variable) e1;
             return new Variable("-" + v1.name());
