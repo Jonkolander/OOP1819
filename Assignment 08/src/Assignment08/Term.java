@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * Modified by:
  * @author Dennis den Hollander | (s4776658)
- * @author Tom Kamp | (s4760921)
+ * @author Tom Kamp             | (s4760921)
  */
 public class Term {
 

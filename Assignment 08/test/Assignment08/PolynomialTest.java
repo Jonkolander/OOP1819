@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.*;
  * The test suite for the polynomial class
  *
  * @author Dennis den Hollander | (s4776658)
- * @author Tom Kamp | (s4760921)
+ * @author Tom Kamp             | (s4760921)
  */
 public class PolynomialTest {
 
